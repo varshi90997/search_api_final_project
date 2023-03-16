@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -28,8 +26,6 @@ class _SearchPageState extends State<SearchPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    test++;
-    print("test==========================>$test");
   }
 
   Future<ApiModel> forFetch() async
@@ -146,17 +142,6 @@ class _SearchPageState extends State<SearchPage> {
                 : const Center(
                     child: Text("no data found"),
                   )),
-            ElevatedButton(onPressed: () {
-              for(int i=0;i<=10;i++)
-                {
-                  if(i==2)
-                    {
-                      print("===============> i= ${i}");
-                    }
-
-                }
-            }, child: Text("data"))
-
           ],
         ),
       ),

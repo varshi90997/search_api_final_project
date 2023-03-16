@@ -23,9 +23,9 @@ class SearchApi extends StatelessWidget {
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            home:  Pagination(),
-            // initialRoute: Routes.searchScreen,
-            // getPages: getPages,
+            // home:  Pagination(),
+            initialRoute: Routes.searchScreen,
+            getPages: getPages,
           );
         }
     );
