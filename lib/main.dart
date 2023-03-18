@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:search_api/modules/search_page.dart';
+import 'package:search_api/pagination/home_page.dart';
 import 'package:search_api/routes/routes.dart';
 import 'package:sizer/sizer.dart';
-
-import 'delet/delet.dart';
-import 'delet/pagination.dart';
 
 void main() {
   runApp(const SearchApi());
@@ -19,13 +16,14 @@ class SearchApi extends StatelessWidget {
     return Sizer(
         builder: (context, orientation, deviceType) {
           return GetMaterialApp(
+            debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            // home:  Pagination(),
-            initialRoute: Routes.searchScreen,
-            getPages: getPages,
+            home:  HomePage(),
+            // initialRoute: Routes.searchScreen,
+            // getPages: getPages,
           );
         }
     );

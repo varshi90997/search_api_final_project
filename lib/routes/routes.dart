@@ -10,5 +10,6 @@ final getPages = [
   GetPage(
     name: Routes.searchScreen,
     page: () => SearchPage(),
+    // arguments:
   ),
 ];

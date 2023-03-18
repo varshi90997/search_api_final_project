@@ -1,9 +1,12 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 import 'package:get/get.dart';
+import 'package:search_api/modules/search_controller.dart';
 import 'package:search_api/modules/search_model.dart';
 import '../../api/api.dart';
-import '../delet/pagination_model.dart';
+import 'package:http/http.dart' as http;
+
 
 class ApiService{
   // Future<ApiModel> getUser() async{
@@ -14,14 +17,15 @@ class ApiService{
   //   }
   //   return ApiModel();
   // }
-  RxString byDefault = " ".obs;
+  RxString byDefault = "".obs;
 
-  Future<ApiModel> getUser(String name) async {
+
+  Future<ApiModel> getUser({String? name}) async {
     try {
       final response = await Api().post("https://yeay-dev.xc.io/search",
           bodyData: {
             "pageIndex": 1,
-            "searchText": name.toString().isEmpty?byDefault.value:name.toString(),
+            "searchText": name.toString()=="null"?byDefault.value:name.toString(),
             "returnedRecords": 20
           });
 
@@ -33,19 +37,4 @@ class ApiService{
       rethrow;
     }
   }
-
-  Future<PaginationModel> getPagination(String name) async {
-    try {
-      final response = await Api().get('https://randomuser.me/api/?page=$name&results=10&seed=abc');
-
-      log("RESPONSE BODY---------------------->: ${response.body}");
-      // log("string ---------------------->: ${name.toString()}");
-
-      return PaginationModel.fromJson(jsonDecode(response.body));
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-
 }
